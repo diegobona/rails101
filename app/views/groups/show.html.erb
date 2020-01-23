@@ -1,9 +1,9 @@
 <div class="col-md-12">
-  这里面的@group是
+  <!-- 这里面的@group是具体的那一个 -->
   <h2><%=@group.title%></h2>
   <p><%=@group.description%></p>
 
-  <table>
+  <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
         <th>文章内容</th>
@@ -33,17 +33,17 @@
   <div class="col-md-1">
     <%if current_user %>
     <%# #对应访问controller中的new action,对应的url无需配置，按约定生成—— %>
-      <%=link_to("New Post",new_group_post_path(@group))%>
+      <%=link_to("发布文章",new_group_post_path(@group),class:"btn btn-primary")%>
     <%end%>
   </div>
   <div class="col-md-1">
     <%if current_user&&current_user==@group.user %>
     <%# #对应访问controller中的edit action,对应的url无需配置，按约定生成—— %>
-    	<%=link_to("Edit",edit_group_path(@group))%>
+    	<%=link_to("编辑版块",edit_group_path(@group),class:"btn btn-default")%>
     <%end%>
   </div>
   <div class="col-md-1">
-    <%=link_to("Back",groups_path)%>
+    <%=link_to("返回",groups_path,class:"btn btn-default")%>
   </div>
 
 </div>

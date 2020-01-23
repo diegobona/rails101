@@ -1,21 +1,25 @@
 <div class="col-md-12">
+  <h2>Rails101</h2>
   <div class="group">
-    <%= link_to('new group',new_group_path,class:"btn btn-default") %>
+    <%= link_to('新增版块',new_group_path,class:"btn btn-primary") %>
   </div>
+  <br>
 
-  <table class="table table-hover">
+  <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
-        <td>#</td>
-        <td>标题</td>
+        <!-- <td>#</td> -->
+        <td>版块名称</td>
         <td>描述</td>
         <td>创建人</td>
+        <td>操作</td>
+
       </tr>
     </thead>
     <tbody>
       <% @groups.each do |group| %>
       <tr>
-        <td>#</td>
+        <!-- <td>#</td> -->
         <!-- group_path对应controller中“show”这个action来处理： -->
         <td><%= link_to(group.title,group_path(group)) %></td>
         <td><%= group.description %></td>
@@ -23,8 +27,8 @@
         <td>
           <% if current_user && current_user==group.user%>
           <%# 对应edit这个action—— %>
-          <%= link_to("edit",edit_group_path(group),class:"btn btn-default") %>
-          <%= link_to("delete",group_path(group),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-default") %>
+          <%= link_to("编辑",edit_group_path(group),class:"btn btn-default") %>
+          <%= link_to("删除",group_path(group),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-default") %>
           <%end%>
         </td>
       </tr>

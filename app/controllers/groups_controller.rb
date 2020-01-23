@@ -13,20 +13,7 @@ class GroupsController < ApplicationController
   def show
     @group=Group.find(params[:id])
   end
-#edit和update方法成对定义：
-  def edit
-  end
-  def update
-    #update需要有title和description字段值,作为参数，在最后定义了。
-    #如果更新(编辑)成功，返回列表页
-    if @group.update(group_params)
-      redirect_to groups_path,notice:"update success"
-    else
-      #继续留在编辑页：
-      render:edit
-    end
-  end
-#new和create方法成对定义：
+  #new和create方法成对定义：
   def new
     #new方法只是在内存中创建一个group对象，未存入数据库
     @group=Group.new
@@ -46,6 +33,20 @@ class GroupsController < ApplicationController
       render:new
     end
   end
+#edit和update方法成对定义：
+  def edit
+  end
+  def update
+    #update需要有title和description字段值,作为参数，在最后定义了。
+    #如果更新(编辑)成功，返回列表页
+    if @group.update(group_params)
+      redirect_to groups_path,notice:"update success"
+    else
+      #继续留在编辑页：
+      render:edit
+    end
+  end
+
 
   def destroy
     #删除某一条指定数据（根据id）
