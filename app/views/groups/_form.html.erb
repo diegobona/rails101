@@ -1,0 +1,12 @@
+<%# 注释：“@”后面必须是对应数据模型的model名，｜f｜可以是任何字母，只要下面dom中的和其一致—— %>
+<%= simple_form_for @group do|f| %>
+
+  <div class="form-group">
+  <%# 该input的id为:group_title。title是表中字段—— %>
+    <%= f.input :title,input_html:{class:'form-control'}%>
+    <%# 该input的id为:group_description %>
+    <%= f.input :description,input_html:{class:'form-control'}%>
+  </div>
+  <%= f.submit "提交",class:'btn btn-primary',data:{disable_with:'submiting...'}%>
+
+<% end %>
